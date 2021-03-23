@@ -30,22 +30,38 @@ tablero_y_numeros=[]
 def tablero (numero_de_pares):
     lista=[]
     set1=[]
-    set2=[]
+    tablero_cartas=[]
     for i in range(numero_de_pares):
         set1.append(i+1)
-        set2.append(i+1)
+        set1.append(i+1)
     random.shuffle(set1)
-    random.shuffle(set2)
     
-    tablero_cartas=[set1,set2]
-    lista.append(tablero_cartas)
+    tablero_cartas=[set1[0:int(len(set1)/2)],set1[int(len(set1)/2):int(len(set1))]]
     
-    tablero_coordenadas= zeros((2,numero_de_pares))
-    print(lista)
+    mat_tablero_cartas=matrix(tablero_cartas)
+    
+    
+
+    lista.append(mat_tablero_cartas) #insertamos los pares de numeros en esta lista en forma de matriz de dimensiones (2,numero de pares)
+  
+    
+    
+    tablero_coordenadas=[[],[]]
+    for i in range(numero_de_pares):
+        tablero_coordenadas[0].append(0)
+        tablero_coordenadas[1].append(0)
+    
+    
+    
+    
     
     for fila in range(len(tablero_coordenadas)):
         for columna in range(len(tablero_coordenadas[fila])):
-            tablero_coordenadas[fila,columna]=(fila,columna)
+            tablero_coordenadas[fila][columna]=(fila,columna)
+    
+    
+    
+
     lista.append(tablero_coordenadas)
             
     return lista
