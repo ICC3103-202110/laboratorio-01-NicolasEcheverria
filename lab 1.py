@@ -7,19 +7,22 @@ Created on Mon Mar 22 11:46:02 2021
 from numpy import *
 
 lista_usuarios={}
-def usuarios_y_puntuaciones(lista):
+nombres_jugadores=[]
+def usuarios_y_puntuaciones(diccionario,lista):
     print("escriba nombre de jugador")
     nombre=input()
-    lista [nombre]=0
+    lista.append(nombre)
+    diccionario [nombre]=0
     print("escriba nombre de segundo jugador")
     nombre=input()
-    lista [nombre]=0
-    return lista
+    lista.append(nombre)
+    diccionario [nombre]=0
+    return [diccionario,lista]
 
-tabla= usuarios_y_puntuaciones(lista_usuarios) #tabla donde se grardaran los nombres y puntuaciones de usuarios
-
+tabla= usuarios_y_puntuaciones(lista_usuarios,nombres_jugadores) #tabla donde se grardaran los nombres y puntuaciones de usuarios
+lista_usuarios=tabla[0]
 print(tabla)
-
+nombres_jugadores=tabla[1]
 
 
 print("cuantos pares de cartas debe haber?")
@@ -66,9 +69,58 @@ def tablero (numero_de_pares):
             
     return lista
 
-tablero_y_numeros= tablero(pares_de_cartas)
+coord_y_numeros= tablero(pares_de_cartas)
 
-print(tablero_y_numeros)
+print(coord_y_numeros)
+
+
+def juego(tablero_coor,tablero_num,diccionario,nombres):
+    print('es el turno de: ',nombres[0],' , puntuacion actual:',diccionario[nombres[0]],'\n')
+    
+    print(tablero_coor)
+    
+    return 1
+
+x= juego(coord_y_numeros[1],coord_y_numeros[0],lista_usuarios,nombres_jugadores)
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
