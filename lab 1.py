@@ -20,8 +20,8 @@ def usuarios_y_puntuaciones(diccionario,lista):
     return [diccionario,lista]
 
 tabla= usuarios_y_puntuaciones(lista_usuarios,nombres_jugadores) #tabla donde se grardaran los nombres y puntuaciones de usuarios
-lista_usuarios=tabla[0]
-print(tabla)
+lista_usuarios=tabla[0]##diccionario con jugadores
+print(tabla[0])#diccionario con jugadores
 nombres_jugadores=tabla[1]
 
 
@@ -41,11 +41,11 @@ def tablero (numero_de_pares):
     
     tablero_cartas=[set1[0:int(len(set1)/2)],set1[int(len(set1)/2):int(len(set1))]]
     
-    mat_tablero_cartas=matrix(tablero_cartas)
+    
     
     
 
-    lista.append(mat_tablero_cartas) #insertamos los pares de numeros en esta lista en forma de matriz de dimensiones (2,numero de pares)
+    lista.append(tablero_cartas) #insertamos los pares de numeros en esta lista
   
     
     
@@ -72,16 +72,70 @@ def tablero (numero_de_pares):
 coord_y_numeros= tablero(pares_de_cartas)
 
 print(coord_y_numeros)
+numeros=coord_y_numeros[0]
 
 
-def juego(tablero_coor,tablero_num,diccionario,nombres):
-    print('es el turno de: ',nombres[0],' , puntuacion actual:',diccionario[nombres[0]],'\n')
+def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
     
-    print(tablero_coor)
+    print('\n','\n','es el turno de: ',nombres[turno],' , puntuacion actual:',diccionario[nombres[turno]],'\n')
+    
+    print(tablero_coor[0],'\n',tablero_coor[1])
+    
+    print('\n',"escriba la coordenada de la carta que quiera dar vuelta de forma 'a,b' ")
+    
+    
+    tablero_coor_suplementario=tablero_coor
+    coordenada_ingresada1=input()
+    
+    coordenada_ingresada1=coordenada_ingresada1.split(',')
+    
+    fila_coordenada_ingresada1=int(coordenada_ingresada1[0])
+    columna_coordenada_ingresada1=int(coordenada_ingresada1[1])
+
+    tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]=str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])
+    r1=tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]
+    
+    
+    
+    ###############parte 1 primer turno################
+    print('\n','\n','es el turno de: ',nombres[turno],' , puntuacion actual:',diccionario[nombres[turno]],'\n')
+    
+    print(tablero_coor[0],'\n',tablero_coor[1])
+    
+    print('\n',"escriba la segunda coordenada de la carta que quiera dar vuelta de forma 'a,b' ")    
+    
+    coordenada_ingresada2=input()
+    coordenada_ingresada2=coordenada_ingresada2.split(',')
+    while coordenada_ingresada2==coordenada_ingresada1:
+        print("coordenada repetida, escriba una que no este seleccionada")
+        coordenada_ingresada2=input()
+        coordenada_ingresada2=coordenada_ingresada2.split(',')
+                              #
+        
+        
+    
+    
+    
+    
+    
+    fila_coordenada_ingresada2=int(coordenada_ingresada2[0])
+    columna_coordenada_ingresada2=int(coordenada_ingresada2[1])
+    tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]=str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])
+    r2=tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]
+    
+    print('\n',tablero_coor[0],'\n',tablero_coor[1],'\n')
+    print(r1,'r1','            ',r2,'r2')
+    
+    if r1==r2:
+        diccionario[nombres[turno]]+=1
+        print('felicidades, has encontrado el par de ',r1,' ganas un turno extra',nombres[turno],' , puntuacion actual:',diccionario[nombres[turno]],'\n')
+        tablero_coor[0].remove(r1)
+        tablero_coor[1].remove(r1)
+        print('\n',tablero_coor[0],'\n',tablero_coor[1],'\n')
     
     return 1
 
-x= juego(coord_y_numeros[1],coord_y_numeros[0],lista_usuarios,nombres_jugadores)
+x= juego(coord_y_numeros[1],numeros,lista_usuarios,nombres_jugadores,0)
     
 
     
