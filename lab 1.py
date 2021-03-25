@@ -71,7 +71,7 @@ def tablero (numero_de_pares):
 
 coord_y_numeros= tablero(pares_de_cartas)
 
-print(coord_y_numeros)
+
 numeros=coord_y_numeros[0]
 
 
@@ -93,10 +93,10 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
     fila_coordenada_ingresada1=int(coordenada_ingresada1[0])
     columna_coordenada_ingresada1=int(coordenada_ingresada1[1])
     
-    c1=tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]
-    tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]=str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])
-    r1=tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]
+    c1=(int(coordenada_ingresada1[0]), int(coordenada_ingresada1[1]))
+    tablero_coor[fila_coordenada_ingresada1][tablero_coor[fila_coordenada_ingresada1].index((fila_coordenada_ingresada1,columna_coordenada_ingresada1))]=str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])
     
+    r1= tablero_coor[fila_coordenada_ingresada1][tablero_coor[fila_coordenada_ingresada1].index((str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])))]
     
     
     ###############parte 1 turno################
@@ -122,9 +122,9 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
     
     fila_coordenada_ingresada2=int(coordenada_ingresada2[0])
     columna_coordenada_ingresada2=int(coordenada_ingresada2[1])
-    c2=tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]
-    tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]=str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])
-    r2=tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]
+    c2=(int(coordenada_ingresada2[0]), int(coordenada_ingresada2[1]))
+    tablero_coor[fila_coordenada_ingresada2][tablero_coor[fila_coordenada_ingresada2].index((fila_coordenada_ingresada2,columna_coordenada_ingresada2))]=str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])
+    r2=tablero_coor[fila_coordenada_ingresada2][tablero_coor[fila_coordenada_ingresada2].index((str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])))]
     
     print('\n',tablero_coor[0],'\n',tablero_coor[1],'\n')
             ###########parte 2  turno#######
@@ -137,15 +137,15 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
             if len(tablero_coor[1])==2:
                 diccionario[nombres[turno]]+=1
                 print('felicidades, has encontrado el par de ',r1,' has terminado el juego',' , puntuaciones finales: ',diccionario,'\n')
-                if r1 in tablero_coor[0]==False:
-                    tablero_coor[1].remove(r1)
-                    tablero_coor[1].remove(r1)
-                elif r1 in tablero_coor[1]==False:
-                    tablero_coor[0].remove(r1)
-                    tablero_coor[0].remove(r1)
+                if (str(r1) in tablero_coor[0])==False:
+                    tablero_coor[1].remove(str(r1))
+                    tablero_coor[1].remove(str(r1))
+                elif (str(r1) in tablero_coor[1])==False:
+                    tablero_coor[0].remove(str(r1))
+                    tablero_coor[0].remove(str(r1))
                 else:
-                    tablero_coor[1].remove(r1)
-                    tablero_coor[0].remove(r1)
+                    tablero_coor[1].remove(str(r1))
+                    tablero_coor[0].remove(str(r1))
                     
                     
                     
@@ -171,25 +171,25 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
             if len(tablero_coor[0])==2:
                 diccionario[nombres[turno]]+=1
                 print('felicidades, has encontrado el par de ',r1,' has terminado el juego',' , puntuaciones finales: ',diccionario,'\n')
-                if r1 in tablero_coor[0]==False:
-                    tablero_coor[1].remove(r1)
-                    tablero_coor[1].remove(r1)
-                elif r1 in tablero_coor[1]==False:
-                    tablero_coor[0].remove(r1)
-                    tablero_coor[0].remove(r1)
+                if(str( r1) in tablero_coor[0])==False:
+                    tablero_coor[1].remove(str(r1))
+                    tablero_coor[1].remove(str(r1))
+                elif (str(r1) in tablero_coor[1])==False:
+                    tablero_coor[0].remove(str(r1))
+                    tablero_coor[0].remove(str(r1))
                 else:
-                    tablero_coor[1].remove(r1)
-                    tablero_coor[0].remove(r1)
+                    tablero_coor[1].remove(str(r1))
+                    tablero_coor[0].remove(str(r1))
                     
                     
                     
                 if diccionario[nombres[0]]>diccionario[nombres[1]]:
-                    print('gana jugador',diccionario[nombres[0]])
+                    print('gana jugador',nombres[0])
                     
                     return 1
                     
                 elif diccionario[nombres[0]]<diccionario[nombres[1]]:
-                    print('gana jugador ',diccionario[nombres[1]])
+                    print('gana jugador ',nombres[1])
                     
                     return 1
                     
@@ -201,16 +201,17 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
         else:
             diccionario[nombres[turno]]+=1
             print('felicidades, has encontrado el par de ',r1,' ganas un turno extra',nombres[turno],', puntuacion actual:',diccionario[nombres[turno]],'\n')
-            if r1 in tablero_coor[0]==False:
-                tablero_coor[1].remove(r1)
-                tablero_coor[1].remove(r1)
-            elif r1 in tablero_coor[1]==False:
-                tablero_coor[0].remove(r1)
-                tablero_coor[0].remove(r1)
+            if (str(r1) in tablero_coor[0])==False:
+                tablero_coor[1].remove(str(r1))
+                tablero_coor[1].remove(str(r1))
+            elif (str(r1) in tablero_coor[1])==False:
+                tablero_coor[0].remove(str(r1))
+                tablero_coor[0].remove(str(r1))
             else:
-                tablero_coor[1].remove(r1)
-                tablero_coor[0].remove(r1)
-                print('\n',tablero_coor[0],'\n',tablero_coor[1],'\n')
+                tablero_coor[1].remove(str(r1))
+                print(tablero_coor[0],'\n',tablero_coor[1])
+                tablero_coor[0].remove(str(r1))
+                print(tablero_coor[0],'\n',tablero_coor[1])
         
         x=juego(coord_y_numeros[1],numeros,lista_usuarios,nombres_jugadores,turno)
 
