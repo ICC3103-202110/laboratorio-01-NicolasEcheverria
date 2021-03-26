@@ -6,9 +6,9 @@ Created on Mon Mar 22 11:46:02 2021
 """
 from numpy import *
 
-list_users={}
-names_players=[]
+
 def users_and_points(dictionary,listt):
+    
     print("write first player's name")
     name=input()
     listt.append(name)
@@ -19,16 +19,9 @@ def users_and_points(dictionary,listt):
     dictionary [name]=0
     return [dictionary,listt]
 
-table= users_and_points(list_users,names_players) #tabla donde se grardaran los nombres y puntuaciones de usuarios
-list_users=table[0]##diccionario con jugadores
-print(table[0])#diccionario con jugadores
-names_players=table[1]
 
 
-print("how many pairs of numbers you want to play with?")
-pair_of_cards=int(input()) #pares de cartas que debe haber en el juego
 
-board_and_numbers=[]
 
 def board (number_of_pairs):
     listt=[]
@@ -69,20 +62,17 @@ def board (number_of_pairs):
             
     return listt
 
-coord_and_numbers= board(pair_of_cards)
 
-
-numbers=coord_and_numbers[0]
-
-
-
-def game(board_coor,board_num,dictionary,names,turn):
+def game(board_coor,board_num,dictionary,names,turn): 
+    print('\n','\n','\n',"It's " ,names[turn],"'s , turn, actual score:",dictionary[names[turn]],'\n')
     
-    print('\n','\n',"It's " ,names[turn],' , turn, actual score:',dictionary[names[turn]],'\n')
+    for fgh in board_coor:
+        print('\n')
+        for asd in  fgh:
+            print(" ",asd,' ',end='')
+    print('\n')
     
-    print(board_coor[0],'\n',board_coor[1])
-    
-    print('\n',"write the coordenates of the card you want to turn in the form 'a,b' ")
+    print("write the coordenates of the card you want to turn in the form 'a,b' ")
     
     
 
@@ -102,9 +92,12 @@ def game(board_coor,board_num,dictionary,names,turn):
     ###############parte 1 turno################
     print('\n','\n')
     
-    print(board_coor[0],'\n',board_coor[1])
-    
-    print('\n',"write the second coordenate of the card you want to turn in the form 'a,b' ")    
+    for fgh in board_coor:
+        print('\n')
+        for asd in  fgh:
+            print(" ",asd,' ',end='')
+    print('\n')
+    print("write the second coordenate of the card you want to turn in the form 'a,b' ")    
     
     coordenate_entered2=input()
     coordenate_entered2=coordenate_entered2.split(',')
@@ -126,7 +119,11 @@ def game(board_coor,board_num,dictionary,names,turn):
     board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((row_coordenate_entered2,column_coordenate_entered2))]=str(board_num[row_coordenate_entered2][column_coordenate_entered2])
     r2=board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((str(board_num[row_coordenate_entered2][column_coordenate_entered2])))]
     
-    print('\n',board_coor[0],'\n',board_coor[1],'\n')
+    for fgh in board_coor:
+        print('\n')
+        for asd in  fgh:
+            print(" ",asd,' ',end='')
+    print('.','\n')
             ###########parte 2  turno#######
     
     
@@ -200,7 +197,7 @@ def game(board_coor,board_num,dictionary,names,turn):
                 
         else:
             dictionary[names[turn]]+=1
-            print("congratulations, you've foud the pair of ",r1,' you win an extra turn ',names[turn],', actual score: ',dictionary[names[turn]],'\n')
+            print('\n',"congratulations, you've foud the pair of ",r1,' you win an extra turn ',names[turn],', actual score: ',dictionary[names[turn]],'\n')
             if (str(r1) in board_coor[0])==False:
                 board_coor[1].remove(str(r1))
                 board_coor[1].remove(str(r1))
@@ -219,7 +216,7 @@ def game(board_coor,board_num,dictionary,names,turn):
 
     else:
         
-        print("you have not found a pair, your turn is over")
+        print('\n',"you have not found a pair, your turn is over")
           
         board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index(r1)]= c1            
         board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index(r2)]= c2
@@ -237,6 +234,34 @@ def game(board_coor,board_num,dictionary,names,turn):
             
     
     return 1
+
+
+
+
+list_users={}
+names_players=[]
+
+
+table= users_and_points(list_users,names_players) #tabla donde se grardaran los nombres y puntuaciones de usuarios
+list_users=table[0]##diccionario con jugadores
+print(table[0])#diccionario con jugadores
+names_players=table[1]
+
+
+print("how many pairs of numbers you want to play with?")
+pair_of_cards=int(input()) #pares de cartas que debe haber en el juego
+
+board_and_numbers=[]
+
+
+coord_and_numbers= board(pair_of_cards)
+
+
+numbers=coord_and_numbers[0]
+
+
+
+
 
 x= game(coord_and_numbers[1],numbers,list_users,names_players,0)
 
