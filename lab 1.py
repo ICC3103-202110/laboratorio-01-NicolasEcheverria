@@ -80,8 +80,30 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     coordenate_entered1=coordenate_entered1.split(',')
     
+    
     row_coordenate_entered1=int(coordenate_entered1[0])
     column_coordenate_entered1=int(coordenate_entered1[1])
+    
+    while ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[0])== False and ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[1])== False:
+        print('invalid coordenate, please select one that is present on the board')
+        for fgh in board_coor:
+            print('\n')
+            for asd in  fgh:
+                print(" ",asd,' ',end='')
+        print('\n')
+    
+        print("write the coordenates of the card you want to turn in the form 'a,b' ")
+    
+    
+
+        coordenate_entered1=input()
+    
+        coordenate_entered1=coordenate_entered1.split(',')
+    
+    
+        row_coordenate_entered1=int(coordenate_entered1[0])
+        column_coordenate_entered1=int(coordenate_entered1[1])
+    
     
     c1=(int(coordenate_entered1[0]), int(coordenate_entered1[1]))
     board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((row_coordenate_entered1,column_coordenate_entered1))]=str(board_num[row_coordenate_entered1][column_coordenate_entered1])
@@ -115,6 +137,35 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     row_coordenate_entered2=int(coordenate_entered2[0])
     column_coordenate_entered2=int(coordenate_entered2[1])
+    while ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[0])== False and ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[1])== False:
+        print('invalid coordenate, please select one that is present on the board')
+        for fgh in board_coor:
+            print('\n')
+            for asd in  fgh:
+                print(" ",asd,' ',end='')
+        print('\n')
+    
+        print("write the coordenates of the card you want to turn in the form 'a,b' ")
+    
+    
+
+        coordenate_entered2=input()
+    
+        coordenate_entered2=coordenate_entered2.split(',')
+    
+    
+        row_coordenate_entered2=int(coordenate_entered2[0])
+        column_coordenate_entered2=int(coordenate_entered2[1])
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     c2=(int(coordenate_entered2[0]), int(coordenate_entered2[1]))
     board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((row_coordenate_entered2,column_coordenate_entered2))]=str(board_num[row_coordenate_entered2][column_coordenate_entered2])
     r2=board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((str(board_num[row_coordenate_entered2][column_coordenate_entered2])))]
