@@ -64,15 +64,15 @@ def board (number_of_pairs):
 
 
 def game(board_coor,board_num,dictionary,names,turn): 
-    print('\n','\n','\n',"It's " ,names[turn],"'s , turn, actual score:",dictionary[names[turn]],'\n')
+    print('\n','\n','\n',"It's " ,names[turn],"'s , turn, actual score:",dictionary[names[turn]],'\n')#dice de quien es el turno
     
-    for fgh in board_coor:
+    for fgh in board_coor:#imprime tablero
         print('\n')
         for asd in  fgh:
             print(" ",asd,' ',end='')
     print('\n')
     
-    print("write the coordenates of the card you want to turn in the form 'a,b' ")
+    print("write the coordenates of the card you want to turn in the form 'a,b' ")#forma de escribir coordenadas
     
     
 
@@ -82,9 +82,9 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     
     row_coordenate_entered1=int(coordenate_entered1[0])
-    column_coordenate_entered1=int(coordenate_entered1[1])
+    column_coordenate_entered1=int(coordenate_entered1[1])#separo filas y columnas
     
-    while ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[0])== False and ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[1])== False:
+    while ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[0])== False and ((row_coordenate_entered1,column_coordenate_entered1) in board_coor[1])== False:#por si se ponen coordenadas no existentes en el tablero
         print('invalid coordenate, please select one that is present on the board')
         for fgh in board_coor:
             print('\n')
@@ -105,16 +105,16 @@ def game(board_coor,board_num,dictionary,names,turn):
         column_coordenate_entered1=int(coordenate_entered1[1])
     
     
-    c1=(int(coordenate_entered1[0]), int(coordenate_entered1[1]))
+    c1=(int(coordenate_entered1[0]), int(coordenate_entered1[1]))#coordenada respuesta 1
     board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((row_coordenate_entered1,column_coordenate_entered1))]=str(board_num[row_coordenate_entered1][column_coordenate_entered1])
     
-    r1= board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((str(board_num[row_coordenate_entered1][column_coordenate_entered1])))]
+    r1= board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((str(board_num[row_coordenate_entered1][column_coordenate_entered1])))]#numero de primer input
     
     
     ###############parte 1 turno################
     print('\n','\n')
     
-    for fgh in board_coor:
+    for fgh in board_coor:#imprime tablero
         print('\n')
         for asd in  fgh:
             print(" ",asd,' ',end='')
@@ -123,7 +123,7 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     coordenate_entered2=input()
     coordenate_entered2=coordenate_entered2.split(',')
-    while coordenate_entered2==coordenate_entered1:
+    while coordenate_entered2==coordenate_entered1:#por si las coordenadas se repiten
         print("you already selectioned this coordenate, please write one that has not been selected")
         coordenate_entered2=input()
         coordenate_entered2=coordenate_entered2.split(',')
@@ -137,7 +137,7 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     row_coordenate_entered2=int(coordenate_entered2[0])
     column_coordenate_entered2=int(coordenate_entered2[1])
-    while ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[0])== False and ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[1])== False:
+    while ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[0])== False and ((row_coordenate_entered2,column_coordenate_entered2) in board_coor[1])== False:#por si seleccionan coordenadas que no existen
         print('invalid coordenate, please select one that is present on the board')
         for fgh in board_coor:
             print('\n')
@@ -155,7 +155,7 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     
         row_coordenate_entered2=int(coordenate_entered2[0])
-        column_coordenate_entered2=int(coordenate_entered2[1])
+        column_coordenate_entered2=int(coordenate_entered2[1])#separa filas y columnas del segundo input
     
     
     
@@ -166,9 +166,9 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     
     
-    c2=(int(coordenate_entered2[0]), int(coordenate_entered2[1]))
+    c2=(int(coordenate_entered2[0]), int(coordenate_entered2[1]))#coordenada respuesta 2
     board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((row_coordenate_entered2,column_coordenate_entered2))]=str(board_num[row_coordenate_entered2][column_coordenate_entered2])
-    r2=board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((str(board_num[row_coordenate_entered2][column_coordenate_entered2])))]
+    r2=board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((str(board_num[row_coordenate_entered2][column_coordenate_entered2])))]#numero respuesta2
     
     for fgh in board_coor:
         print('\n')
