@@ -7,7 +7,7 @@ Created on Mon Mar 22 11:46:02 2021
 from numpy import *
 
 
-def users_and_points(dictionary,listt):
+def users_and_points(dictionary,listt):#crea diccionario con nombres jugadores y sus puntajes
     
     print("write first player's name")
     name=input()
@@ -23,7 +23,7 @@ def users_and_points(dictionary,listt):
 
 
 
-def board (number_of_pairs):
+def board (number_of_pairs):#crea cartas
     listt=[]
     set1=[]
     board_cards=[]
@@ -180,8 +180,8 @@ def game(board_coor,board_num,dictionary,names,turn):
     
     
     
-    if r1==r2:
-        if len(board_coor[0])<=1:
+    if r1==r2:#encontrar 2 pares
+        if len(board_coor[0])<=1:#fin del juego
             if len(board_coor[1])<=2:
                 dictionary[names[turn]]+=1
                 print("congratulations you've found the pair of ",r1,' the game has ended',' ,final scores: ',dictionary,'\n')
@@ -215,7 +215,7 @@ def game(board_coor,board_num,dictionary,names,turn):
 
         
             
-        if len(board_coor[1])<=1:
+        if len(board_coor[1])<=1:#fin del juego
             if len(board_coor[0])<=2:
                 dictionary[names[turn]]+=1
                 print("congratulations you've found the pair of ",r1,' the game has ended , final scores:  ',dictionary,'\n')
@@ -246,7 +246,7 @@ def game(board_coor,board_num,dictionary,names,turn):
                 
                     return 1
                 
-        else:
+        else:#encuentra pares
             dictionary[names[turn]]+=1
             print('\n',"congratulations, you've foud the pair of ",r1,' you win an extra turn ',names[turn],', actual score: ',dictionary[names[turn]],'\n')
             if (str(r1) in board_coor[0])==False:
@@ -265,7 +265,7 @@ def game(board_coor,board_num,dictionary,names,turn):
 
 
 
-    else:
+    else:#no encuentra pares
         
         print('\n',"you have not found a pair, your turn is over")
           
