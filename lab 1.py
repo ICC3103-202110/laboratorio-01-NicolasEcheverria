@@ -6,112 +6,112 @@ Created on Mon Mar 22 11:46:02 2021
 """
 from numpy import *
 
-lista_usuarios={}
-nombres_jugadores=[]
-def usuarios_y_puntuaciones(diccionario,lista):
-    print("escriba nombre de jugador")
-    nombre=input()
-    lista.append(nombre)
-    diccionario [nombre]=0
-    print("escriba nombre de segundo jugador")
-    nombre=input()
-    lista.append(nombre)
-    diccionario [nombre]=0
-    return [diccionario,lista]
+list_users={}
+names_players=[]
+def users_and_points(dictionary,listt):
+    print("write first player's name")
+    name=input()
+    listt.append(name)
+    dictionary [name]=0
+    print("write second player's name")
+    name=input()
+    listt.append(name)
+    dictionary [name]=0
+    return [dictionary,listt]
 
-tabla= usuarios_y_puntuaciones(lista_usuarios,nombres_jugadores) #tabla donde se grardaran los nombres y puntuaciones de usuarios
-lista_usuarios=tabla[0]##diccionario con jugadores
-print(tabla[0])#diccionario con jugadores
-nombres_jugadores=tabla[1]
+table= users_and_points(list_users,names_players) #tabla donde se grardaran los nombres y puntuaciones de usuarios
+list_users=table[0]##diccionario con jugadores
+print(table[0])#diccionario con jugadores
+names_players=table[1]
 
 
-print("cuantos pares de cartas debe haber?")
-pares_de_cartas=int(input()) #pares de cartas que debe haber en el juego
+print("how many pairs of numbers you want to play with?")
+pair_of_cards=int(input()) #pares de cartas que debe haber en el juego
 
-tablero_y_numeros=[]
+board_and_numbers=[]
 
-def tablero (numero_de_pares):
-    lista=[]
+def board (number_of_pairs):
+    listt=[]
     set1=[]
-    tablero_cartas=[]
-    for i in range(numero_de_pares):
+    board_cards=[]
+    for i in range(number_of_pairs):
         set1.append(i+1)
         set1.append(i+1)
     random.shuffle(set1)
     
-    tablero_cartas=[set1[0:int(len(set1)/2)],set1[int(len(set1)/2):int(len(set1))]]
+    board_cards=[set1[0:int(len(set1)/2)],set1[int(len(set1)/2):int(len(set1))]]
     
     
     
     
 
-    lista.append(tablero_cartas) #insertamos los pares de numeros en esta lista
+    listt.append(board_cards) #insertamos los pares de numeros en esta lista
   
     
     
-    tablero_coordenadas=[[],[]]
-    for i in range(numero_de_pares):
-        tablero_coordenadas[0].append(0)
-        tablero_coordenadas[1].append(0)
+    board_coordenates=[[],[]]
+    for i in range(number_of_pairs):
+        board_coordenates[0].append(0)
+        board_coordenates[1].append(0)
     
     
     
     
     
-    for fila in range(len(tablero_coordenadas)):
-        for columna in range(len(tablero_coordenadas[fila])):
-            tablero_coordenadas[fila][columna]=(fila,columna)
+    for row in range(len(board_coordenates)):
+        for column in range(len(board_coordenates[row])):
+            board_coordenates[row][column]=(row,column)
     
     
     
 
-    lista.append(tablero_coordenadas)
+    listt.append(board_coordenates)
             
-    return lista
+    return listt
 
-coord_y_numeros= tablero(pares_de_cartas)
-
-
-numeros=coord_y_numeros[0]
+coord_and_numbers= board(pair_of_cards)
 
 
+numbers=coord_and_numbers[0]
 
-def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
+
+
+def game(board_coor,board_num,dictionary,names,turn):
     
-    print('\n','\n','es el turno de: ',nombres[turno],' , puntuacion actual:',diccionario[nombres[turno]],'\n')
+    print('\n','\n',"It's " ,names[turn],' , turn, actual score:',dictionary[names[turn]],'\n')
     
-    print(tablero_coor[0],'\n',tablero_coor[1])
+    print(board_coor[0],'\n',board_coor[1])
     
-    print('\n',"escriba la coordenada de la carta que quiera dar vuelta de forma 'a,b' ")
+    print('\n',"write the coordenates of the card you want to turn in the form 'a,b' ")
     
     
 
-    coordenada_ingresada1=input()
+    coordenate_entered1=input()
     
-    coordenada_ingresada1=coordenada_ingresada1.split(',')
+    coordenate_entered1=coordenate_entered1.split(',')
     
-    fila_coordenada_ingresada1=int(coordenada_ingresada1[0])
-    columna_coordenada_ingresada1=int(coordenada_ingresada1[1])
+    row_coordenate_entered1=int(coordenate_entered1[0])
+    column_coordenate_entered1=int(coordenate_entered1[1])
     
-    c1=(int(coordenada_ingresada1[0]), int(coordenada_ingresada1[1]))
-    tablero_coor[fila_coordenada_ingresada1][tablero_coor[fila_coordenada_ingresada1].index((fila_coordenada_ingresada1,columna_coordenada_ingresada1))]=str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])
+    c1=(int(coordenate_entered1[0]), int(coordenate_entered1[1]))
+    board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((row_coordenate_entered1,column_coordenate_entered1))]=str(board_num[row_coordenate_entered1][column_coordenate_entered1])
     
-    r1= tablero_coor[fila_coordenada_ingresada1][tablero_coor[fila_coordenada_ingresada1].index((str(tablero_num[fila_coordenada_ingresada1][columna_coordenada_ingresada1])))]
+    r1= board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index((str(board_num[row_coordenate_entered1][column_coordenate_entered1])))]
     
     
     ###############parte 1 turno################
-    print('\n','\n','es el turno de: ',nombres[turno],' , puntuacion actual:',diccionario[nombres[turno]],'\n')
+    print('\n','\n')
     
-    print(tablero_coor[0],'\n',tablero_coor[1])
+    print(board_coor[0],'\n',board_coor[1])
     
-    print('\n',"escriba la segunda coordenada de la carta que quiera dar vuelta de forma 'a,b' ")    
+    print('\n',"write the second coordenate of the card you want to turn in the form 'a,b' ")    
     
-    coordenada_ingresada2=input()
-    coordenada_ingresada2=coordenada_ingresada2.split(',')
-    while coordenada_ingresada2==coordenada_ingresada1:
-        print("coordenada repetida, escriba una que no este seleccionada")
-        coordenada_ingresada2=input()
-        coordenada_ingresada2=coordenada_ingresada2.split(',')
+    coordenate_entered2=input()
+    coordenate_entered2=coordenate_entered2.split(',')
+    while coordenate_entered2==coordenate_entered1:
+        print("you already selectioned this coordenate, please write one that has not been selected")
+        coordenate_entered2=input()
+        coordenate_entered2=coordenate_entered2.split(',')
                               #
         
         
@@ -120,146 +120,125 @@ def juego(tablero_coor,tablero_num,diccionario,nombres,turno):
     
     
     
-    fila_coordenada_ingresada2=int(coordenada_ingresada2[0])
-    columna_coordenada_ingresada2=int(coordenada_ingresada2[1])
-    c2=(int(coordenada_ingresada2[0]), int(coordenada_ingresada2[1]))
-    tablero_coor[fila_coordenada_ingresada2][tablero_coor[fila_coordenada_ingresada2].index((fila_coordenada_ingresada2,columna_coordenada_ingresada2))]=str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])
-    r2=tablero_coor[fila_coordenada_ingresada2][tablero_coor[fila_coordenada_ingresada2].index((str(tablero_num[fila_coordenada_ingresada2][columna_coordenada_ingresada2])))]
+    row_coordenate_entered2=int(coordenate_entered2[0])
+    column_coordenate_entered2=int(coordenate_entered2[1])
+    c2=(int(coordenate_entered2[0]), int(coordenate_entered2[1]))
+    board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((row_coordenate_entered2,column_coordenate_entered2))]=str(board_num[row_coordenate_entered2][column_coordenate_entered2])
+    r2=board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index((str(board_num[row_coordenate_entered2][column_coordenate_entered2])))]
     
-    print('\n',tablero_coor[0],'\n',tablero_coor[1],'\n')
+    print('\n',board_coor[0],'\n',board_coor[1],'\n')
             ###########parte 2  turno#######
     
     
     
     
     if r1==r2:
-        if len(tablero_coor[0])==0:
-            if len(tablero_coor[1])==2:
-                diccionario[nombres[turno]]+=1
-                print('felicidades, has encontrado el par de ',r1,' has terminado el juego',' , puntuaciones finales: ',diccionario,'\n')
-                if (str(r1) in tablero_coor[0])==False:
-                    tablero_coor[1].remove(str(r1))
-                    tablero_coor[1].remove(str(r1))
-                elif (str(r1) in tablero_coor[1])==False:
-                    tablero_coor[0].remove(str(r1))
-                    tablero_coor[0].remove(str(r1))
+        if len(board_coor[0])<=1:
+            if len(board_coor[1])<=2:
+                dictionary[names[turn]]+=1
+                print("congratulations you've found the pair of ",r1,' the game has ended',' ,final scores: ',dictionary,'\n')
+                if (str(r1) in board_coor[0])==False:
+                    board_coor[1].remove(str(r1))
+                    board_coor[1].remove(str(r1))
+                elif (str(r1) in board_coor[1])==False:
+                    board_coor[0].remove(str(r1))
+                    board_coor[0].remove(str(r1))
                 else:
-                    tablero_coor[1].remove(str(r1))
-                    tablero_coor[0].remove(str(r1))
+                    board_coor[1].remove(str(r1))
+                    board_coor[0].remove(str(r1))
                     
                     
                     
-                if diccionario[nombres[0]]>diccionario[nombres[1]]:
-                    print('gana jugador',diccionario[nombres[0]])
+                if dictionary[names[0]]>dictionary[names[1]]:
+                    print(names[0]," wins")
                     
                     return 1
                 
-                elif diccionario[nombres[0]]<diccionario[nombres[1]]:
-                    print('gana jugador ',diccionario[nombres[1]])
+                elif dictionary[names[0]]<dictionary[names[1]]:
+                    print(names[1]," wins")
                     
                     return 1
                     
-                elif diccionario[nombres[0]]==diccionario[nombres[1]]:
-                    print('es un empate')
+                elif dictionary[names[0]]==dictionary[names[1]]:
+                    print("It's a tie")
                     
                     return 1
                     
 
         
             
-        if len(tablero_coor[1])==0:
-            if len(tablero_coor[0])==2:
-                diccionario[nombres[turno]]+=1
-                print('felicidades, has encontrado el par de ',r1,' has terminado el juego',' , puntuaciones finales: ',diccionario,'\n')
-                if(str( r1) in tablero_coor[0])==False:
-                    tablero_coor[1].remove(str(r1))
-                    tablero_coor[1].remove(str(r1))
-                elif (str(r1) in tablero_coor[1])==False:
-                    tablero_coor[0].remove(str(r1))
-                    tablero_coor[0].remove(str(r1))
+        if len(board_coor[1])<=1:
+            if len(board_coor[0])<=2:
+                dictionary[names[turn]]+=1
+                print("congratulations you've found the pair of ",r1,' the game has ended , final scores:  ',dictionary,'\n')
+                if(str( r1) in board_coor[0])==False:
+                    board_coor[1].remove(str(r1))
+                    board_coor[1].remove(str(r1))
+                elif (str(r1) in board_coor[1])==False:
+                    board_coor[0].remove(str(r1))
+                    board_coor[0].remove(str(r1))
                 else:
-                    tablero_coor[1].remove(str(r1))
-                    tablero_coor[0].remove(str(r1))
+                    board_coor[1].remove(str(r1))
+                    board_coor[0].remove(str(r1))
                     
                     
                     
-                if diccionario[nombres[0]]>diccionario[nombres[1]]:
-                    print('gana jugador',nombres[0])
-                    
-                    return 1
-                    
-                elif diccionario[nombres[0]]<diccionario[nombres[1]]:
-                    print('gana jugador ',nombres[1])
+                if dictionary[names[0]]>dictionary[names[1]]:
+                    print(names[0]," Wins")
                     
                     return 1
                     
-                elif diccionario[nombres[0]]==diccionario[nombres[1]]:
-                    print('es un empate')
+                elif dictionary[names[0]]<dictionary[names[1]]:
+                    print(names[1]," Wins")
+                    
+                    return 1
+                    
+                elif dictionary[names[0]]==dictionary[names[1]]:
+                    print("It's a tie")
                 
                     return 1
                 
         else:
-            diccionario[nombres[turno]]+=1
-            print('felicidades, has encontrado el par de ',r1,' ganas un turno extra',nombres[turno],', puntuacion actual:',diccionario[nombres[turno]],'\n')
-            if (str(r1) in tablero_coor[0])==False:
-                tablero_coor[1].remove(str(r1))
-                tablero_coor[1].remove(str(r1))
-            elif (str(r1) in tablero_coor[1])==False:
-                tablero_coor[0].remove(str(r1))
-                tablero_coor[0].remove(str(r1))
+            dictionary[names[turn]]+=1
+            print("congratulations, you've foud the pair of ",r1,' you win an extra turn ',names[turn],', actual score: ',dictionary[names[turn]],'\n')
+            if (str(r1) in board_coor[0])==False:
+                board_coor[1].remove(str(r1))
+                board_coor[1].remove(str(r1))
+            elif (str(r1) in board_coor[1])==False:
+                board_coor[0].remove(str(r1))
+                board_coor[0].remove(str(r1))
             else:
-                tablero_coor[1].remove(str(r1))
-                print(tablero_coor[0],'\n',tablero_coor[1])
-                tablero_coor[0].remove(str(r1))
-                print(tablero_coor[0],'\n',tablero_coor[1])
+                board_coor[1].remove(str(r1))
+                
+                board_coor[0].remove(str(r1))
+                
         
-        x=juego(coord_y_numeros[1],numeros,lista_usuarios,nombres_jugadores,turno)
+        x=game(coord_and_numbers[1],numbers,list_users,names_players,turn)
 
 
 
     else:
         
-        print("no haz  encontrado un par,termina tu turno")
+        print("you have not found a pair, your turn is over")
           
-        tablero_coor[fila_coordenada_ingresada1][columna_coordenada_ingresada1]= c1            
-        tablero_coor[fila_coordenada_ingresada2][columna_coordenada_ingresada2]= c2
+        board_coor[row_coordenate_entered1][board_coor[row_coordenate_entered1].index(r1)]= c1            
+        board_coor[row_coordenate_entered2][board_coor[row_coordenate_entered2].index(r2)]= c2
            
          
         
-        if turno==0:
-            turno=1
-        elif turno==1:
-            turno=0
+        if turn==0:
+            turn=1
+        elif turn==1:
+            turn=0
             
             
-        x=juego(coord_y_numeros[1],numeros,lista_usuarios,nombres_jugadores,turno)
+        x=game(coord_and_numbers[1],numbers,list_users,names_players,turn)
             
             
     
     return 1
 
-x= juego(coord_y_numeros[1],numeros,lista_usuarios,nombres_jugadores,0)
-    
-
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+x= game(coord_and_numbers[1],numbers,list_users,names_players,0)
 
 
 
